@@ -38,6 +38,7 @@
       ripgrep
       s3cmd
       code-cursor
+      gh
 
       # XDG and Desktop Integration
       glib # for gsettings to work
