@@ -2,10 +2,11 @@
   description = "Crux Nix";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05"; # Stable for system
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable"; # Unstable for Zen Browser
-
-    nixvim.url = "github:dc-tec/nixvim";
+    #nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05"; # Stable for system
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    nixvim.url = "github:nix-community/nixvim";
 
     sops-nix = {
       url = "github:Mic92/sops-nix";
@@ -14,7 +15,24 @@
 
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    ags = {
+      type = "github";
+      owner = "aylur";
+      repo = "ags";
+      ref = "v1";
+    };
+
+    catppuccin = {
+      url = "github:catppuccin/nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    quickshell = {
+      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
@@ -22,7 +40,7 @@
     inputs@{
       self,
       nixpkgs,
-      nixpkgs-unstable,
+      ags,
       sops-nix,
       ...
     }:
@@ -30,10 +48,17 @@
       system = "x86_64-linux";
       host = "wrkT14s";
       username = "crux";
+
+      pkgs = import nixpkgs {
+        inherit system;
+        config = {
+          allowUnfree = true;
+        };
+      };
     in
     {
       nixosConfigurations = {
-        "${host}" = nixpkgs.lib.nixosSystem {
+        "${host}" = nixpkgs.lib.nixosSystem rec {
           specialArgs = {
             inherit system;
             inherit inputs;
@@ -43,6 +68,44 @@
           modules = [
             ./hosts/${host}/config.nix
             sops-nix.nixosModules.sops
+            # inputs.distro-grub-themes.nixosModules.${system}.default
+            ./modules/overlays.nix # nixpkgs overlays (CMake policy fixes)
+            ./modules/quickshell.nix # quickshell module
+            ./modules/packages.nix # Software packages
+            # Allow broken packages (temporary fix for broken CUDA in nixos-unstable)
+            { nixpkgs.config.allowBroken = true; }
+            ./modules/fonts.nix # Fonts packages
+            ./modules/portals.nix # portal
+            ./modules/theme.nix # Set dark theme
+            ./modules/ly.nix # ly greater with matrix animation
+            inputs.catppuccin.nixosModules.catppuccin
+            # Integrate Home Manager as a NixOS module
+            inputs.home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+
+              # Ensure HM modules can access flake inputs (e.g., inputs.nixvim)
+              home-manager.extraSpecialArgs = {
+                inherit
+                  inputs
+                  system
+                  username
+                  host
+                  ;
+              };
+
+              home-manager.users.${username} = {
+                home.username = username;
+                home.homeDirectory = "/home/${username}";
+                home.stateVersion = "24.05";
+
+                # Import your copied HM modules
+                imports = [
+                  ./modules/home/default.nix
+                ];
+              };
+            }
           ];
         };
       };

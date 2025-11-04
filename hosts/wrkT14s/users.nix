@@ -22,7 +22,10 @@
   };
 
   environment.shells = with pkgs; [ zsh ];
-  environment.systemPackages = with pkgs; [ fzf ];
+  environment.systemPackages = with pkgs; [
+    lsd
+    fzf
+  ];
 
   programs = {
     # Zsh configuration
