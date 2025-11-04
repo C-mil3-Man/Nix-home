@@ -87,6 +87,7 @@
     ncdu # Disk usage viewer
     findutils # Basic Unix find/xargs
     gnumake # Build automation tool
+    cargo
     gcc # C compiler
     clang # C/C++/ObjC compiler
     cmake # Build system generator
