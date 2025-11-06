@@ -1,8 +1,7 @@
-{
-  pkgs,
-  inputs,
-  host,
-  ...
+{ pkgs
+, inputs
+, host
+, ...
 }:
 {
 
@@ -141,7 +140,7 @@
     # Networking / VPN / Internet #
     ##################################
     networkmanagerapplet # NetworkManager tray app
-    networkmanager # Network management daemon
+    networkmanager-l2tp # Network management daemon
     xl2tpd # L2TP VPN daemon
     strongswan # IPsec VPN client
     wget # HTTP downloader

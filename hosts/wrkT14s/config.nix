@@ -1,9 +1,8 @@
-{
-  pkgs,
-  host,
-  username,
-  options,
-  ...
+{ pkgs
+, host
+, username
+, options
+, ...
 }:
 {
   imports = [
@@ -87,6 +86,7 @@
       enable = true;
       plugins = [
         pkgs.networkmanager-strongswan
+        pkgs.networkmanager-l2tp
       ];
     };
     hostName = "${host}";
