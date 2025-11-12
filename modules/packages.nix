@@ -132,9 +132,7 @@
     s3cmd # S3-compatible storage client
     code-cursor # VSCode Cursor edition
     lazygit # TUI Git client
-    serie # CLI Git utility
     gh # GitHub CLI
-    lazydocker # Docker TUI client
 
     ##################################
     # Networking / VPN / Internet #
