@@ -23,6 +23,7 @@
     seahorse.enable = true;
     fuse.userAllowOther = true;
     mtr.enable = true;
+    direnv.enable = true;
 
     gnupg.agent = {
       enable = true;
@@ -101,15 +102,10 @@
     zoxide # Smarter directory jumping
     starship # Cross-shell prompt
     oh-my-posh # Shell prompt theme engine
-    htop # Interactive process viewer
-    glances # System monitor
-    atop # Advanced system/resource monitor
-    mission-center # Modern system resource GUI
     neofetch # System info in terminal
     fastfetch # Fast system info CLI
     dysk # Disk usage visualizer
     eza # Modern `ls` replacement
-    lolcat # Colorize terminal output
     figlet # ASCII art text generator
     cmatrix # Matrix terminal effect
     file-roller # Archive manager
@@ -133,6 +129,8 @@
     code-cursor # VSCode Cursor edition
     lazygit # TUI Git client
     gh # GitHub CLI
+    lazyjournal # TUI for journalctl
+    direnv
 
     ##################################
     # Networking / VPN / Internet #
