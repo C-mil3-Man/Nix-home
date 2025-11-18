@@ -989,16 +989,6 @@
         fg = "#20c2e3";
       }
       {
-        name = "tmux.conf";
-        text = "";
-        fg = "#14ba19";
-      }
-      {
-        name = "tmux.conf.local";
-        text = "";
-        fg = "#14ba19";
-      }
-      {
         name = "tsconfig.json";
         text = "";
         fg = "#519aba";
@@ -3094,11 +3084,6 @@
         name = "tgz";
         text = "";
         fg = "#eca517";
-      }
-      {
-        name = "tmux";
-        text = "";
-        fg = "#14ba19";
       }
       {
         name = "toml";

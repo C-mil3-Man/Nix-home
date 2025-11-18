@@ -31,7 +31,6 @@
     };
 
     git.enable = true;
-    tmux.enable = true;
     nm-applet.indicator = true;
 
     neovim = {
