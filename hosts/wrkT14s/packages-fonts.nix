@@ -27,7 +27,7 @@ in
   programs = {
 
     steam = {
-      enable = false;
+      enable = true;
       gamescopeSession.enable = false;
       remotePlay.openFirewall = false;
       dedicatedServer.openFirewall = false;
