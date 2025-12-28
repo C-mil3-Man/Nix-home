@@ -1,10 +1,9 @@
-{ pkgs
-, inputs
-, host
-, ...
-}:
 {
-
+  pkgs,
+  inputs,
+  host,
+  ...
+}: {
   nixpkgs.config.allowUnfree = true;
 
   programs = {
@@ -51,7 +50,6 @@
   };
 
   environment.systemPackages = with pkgs; [
-
     # Update flake script
     (writeShellScriptBin "update" ''
       cd ~/nix-home
@@ -70,6 +68,7 @@
     ##############################
     # Core System Utilities   #
     ##############################
+    alejandra # Formatter
     curl # Command-line data transfer tool
     wget # File downloader
     dig # DNS lookup tool
@@ -87,9 +86,9 @@
     findutils # Basic Unix find/xargs
     gnumake # Build automation tool
     cargo
-    gcc # C compiler
-    clang # C/C++/ObjC compiler
-    cmake # Build system generator
+    #gcc # C compiler
+    #clang # C/C++/ObjC compiler
+    #cmake # Build system generator
     jq # JSON processor
     ripgrep # Fast grep replacement
     bat # Syntax-highlighted `cat`
@@ -191,7 +190,7 @@
     ###################################
     ffmpeg # Multimedia framework
     vlc # Video player
-    (mpv.override { scripts = [ mpvScripts.mpris ]; }) # Video player with MPRIS
+    (mpv.override {scripts = [mpvScripts.mpris];}) # Video player with MPRIS
     loupe # Image viewer
     eog # GNOME image viewer
     feh # Lightweight image viewer
@@ -212,6 +211,5 @@
     ##############################
     inputs.ags.packages.${pkgs.system}.default
     inputs.quickshell.packages.${pkgs.system}.default
-
   ];
 }

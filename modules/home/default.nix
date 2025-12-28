@@ -1,6 +1,4 @@
-{ ... }:
-
-{
+{...}: {
   imports = [
     ./terminals/ghostty.nix
     ./editors/nixvim.nix
@@ -14,5 +12,4 @@
     ./cli/tealdeer.nix
     ./yazi
   ];
-
 }

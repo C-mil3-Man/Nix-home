@@ -1,10 +1,10 @@
-{ pkgs
-, host
-, username
-, options
-, ...
-}:
 {
+  pkgs,
+  host,
+  username,
+  options,
+  ...
+}: {
   imports = [
     ./hardware.nix
     ./users.nix
@@ -43,7 +43,7 @@
         "sd_mod"
         "amdgpu"
       ];
-      kernelModules = [ ];
+      kernelModules = [];
     };
 
     # Needed For Some Steam Games
@@ -90,7 +90,7 @@
       ];
     };
     hostName = "${host}";
-    timeServers = options.networking.timeServers.default ++ [ "pool.ntp.org" ];
+    timeServers = options.networking.timeServers.default ++ ["pool.ntp.org"];
   };
 
   # Set your time zone.
@@ -249,8 +249,8 @@
         "nix-command"
         "flakes"
       ];
-      substituters = [ "https://hyprland.cachix.org" ];
-      trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
+      substituters = ["https://hyprland.cachix.org"];
+      trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
     };
     gc = {
       automatic = true;
@@ -293,7 +293,7 @@
         integrity {
           load = no;
         }
-      }                                    
+      }
     }
   '';
 

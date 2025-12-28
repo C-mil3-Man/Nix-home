@@ -1,6 +1,8 @@
-{ pkgs, username, ... }:
-
 {
+  pkgs,
+  username,
+  ...
+}: {
   users = {
     mutableUsers = true;
     users."${username}" = {
@@ -21,7 +23,7 @@
     defaultUserShell = pkgs.zsh;
   };
 
-  environment.shells = with pkgs; [ zsh ];
+  environment.shells = with pkgs; [zsh];
   environment.systemPackages = with pkgs; [
     lsd
     fzf
@@ -39,7 +41,7 @@
           "sudo"
           "colored-man-pages"
         ];
-        theme = "xiong-chiamiov-plus";
+        theme = "agnoster";
       };
 
       autosuggestions.enable = true;
