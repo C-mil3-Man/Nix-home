@@ -129,6 +129,7 @@
     gh # GitHub CLI
     lazyjournal # TUI for journalctl
     direnv
+    vscodium-fhs
 
     ##################################
     # Networking / VPN / Internet #
