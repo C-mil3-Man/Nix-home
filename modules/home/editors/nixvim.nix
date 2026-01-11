@@ -404,7 +404,7 @@ in {
       markdown-preview = {
         enable = true;
         settings = {
-          auto_start = false;
+          auto_start = 0;
           theme = "dark";
         };
       };

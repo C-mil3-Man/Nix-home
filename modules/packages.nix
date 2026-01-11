@@ -39,12 +39,12 @@
 
     thunar = {
       enable = true;
-      plugins = with pkgs.xfce; [
-        exo
-        mousepad
-        thunar-archive-plugin
-        thunar-volman
-        tumbler
+      plugins = [
+        pkgs.xfce4-exo
+        pkgs.mousepad
+        pkgs.thunar-archive-plugin
+        pkgs.thunar-volman
+        pkgs.tumbler
       ];
     };
   };
@@ -130,6 +130,7 @@
     lazyjournal # TUI for journalctl
     direnv
     vscodium-fhs
+    gemini-cli
 
     ##################################
     # Networking / VPN / Internet #
@@ -184,7 +185,6 @@
     libappindicator # System tray support
     libnotify # Notification library
     kitty # Terminal emulator
-    wezterm # GPU-accelerated terminal emulator
 
     ###################################
     # Multimedia / GUI Applications #
