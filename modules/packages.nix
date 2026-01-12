@@ -121,6 +121,7 @@
     luarocks # Lua package manager
     nh # Nix helper tool
     colmena # NixOS deployment tool
+    deploy-rs # Secondary deployment tool
     sops # Secret management
     openstackclient # OpenStack CLI
     s3cmd # S3-compatible storage client
