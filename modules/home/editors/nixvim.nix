@@ -284,7 +284,6 @@ in {
         enable = true;
         theme = "dashboard";
       };
-
       # Git integrations
       gitsigns = {
         enable = true;
@@ -295,12 +294,24 @@ in {
             virt_text_pos = "eol";
           };
           signs = {
-            add = {text = "▎";};
-            change = {text = "▎";};
-            delete = {text = "";};
-            topdelete = {text = "";};
-            changedelete = {text = "▎";};
-            untracked = {text = "▎";};
+            add = {
+              text = " ";
+            };
+            change = {
+              text = " ";
+            };
+            delete = {
+              text = " ";
+            };
+            untracked = {
+              text = "";
+            };
+            topdelete = {
+              text = "󱂥 ";
+            };
+            changedelete = {
+              text = "󱂧 ";
+            };
           };
         };
       };
@@ -369,7 +380,14 @@ in {
           enable_check_bracket_line = false;
           fast_wrap = {
             map = "<M-e>";
-            chars = ["{" "[" "(" "\"" "'" "`"];
+            chars = [
+              "{"
+              "["
+              "("
+              "\""
+              "'"
+              "`"
+            ];
           };
         };
       };
