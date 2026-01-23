@@ -201,7 +201,6 @@
     baobab # Disk usage analyzer (GUI)
     wdisplays # Display configuration GUI
     bc
-    heroic
 
     ##############################
     # Virtualization Tools    #
