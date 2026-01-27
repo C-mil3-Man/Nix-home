@@ -87,6 +87,7 @@
       plugins = [
         pkgs.networkmanager-strongswan
         pkgs.networkmanager-l2tp
+        pkgs.networkmanager-openconnect
       ];
     };
     hostName = "${host}";

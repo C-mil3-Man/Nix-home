@@ -30,7 +30,6 @@
   ];
 
   programs = {
-    # Zsh configuration
     zsh = {
       enable = true;
       enableCompletion = true;
@@ -41,15 +40,15 @@
           "sudo"
           "colored-man-pages"
         ];
-        theme = "agnoster";
+        theme = "";
       };
 
       autosuggestions.enable = true;
       syntaxHighlighting.enable = true;
 
-      #fastfetch -c $HOME/.config/fastfetch/config-compact.jsonc
       promptInit = ''
-
+        eval "$(starship init zsh)"
+        export LS_COLORS="$LS_COLORS:*.yaml=01;33:*.yml=01;33:"
         source <(fzf --zsh);
         HISTFILE=~/.zsh_history;
         HISTSIZE=10000;
