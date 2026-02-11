@@ -1,20 +1,26 @@
 {pkgs, ...}: {
-  services.greetd = {
+  programs.regreet = {
     enable = true;
-
     settings = {
-      default_session = {
-        user = "greeter";
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet \
-          --time \
-          --remember \
-          --remember-user-session \
-          --asterisks \
-          --cmd Hyprland";
+      background = {
+        path = "/home/crux/Pictures/wallpapers/lainwp.jpg";
+        fit = "Cover"; # or "Fill", "Contain", "ScaleDown"
+      };
+      GTK = {
+        application_prefer_dark_theme = true;
       };
     };
   };
 
-  # Required for greetd login
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.regreet}/bin/regreet";
+        user = "greeter";
+      };
+    };
+  };
+
   security.pam.services.greetd = {};
 }
