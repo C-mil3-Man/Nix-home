@@ -211,9 +211,6 @@
     ##############################
     # Extra Packages          #
     ##############################
-    inputs.ags.packages.${pkgs.system}.default
     inputs.quickshell.packages.${pkgs.system}.default
-
-    perfect_dark
   ];
 }

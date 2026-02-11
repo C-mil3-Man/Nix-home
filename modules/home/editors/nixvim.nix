@@ -485,11 +485,7 @@ in {
           nixd.enable = true;
           lua_ls.enable = true;
           pyright.enable = true;
-          ts_ls.enable = true;
-          html.enable = true;
-          cssls.enable = true;
           clangd.enable = true;
-          zls.enable = true;
           marksman.enable = true;
           # Ansible language server was removed from nixpkgs
           # Using yamlls with Ansible schemas instead
@@ -522,11 +518,7 @@ in {
           formatters_by_ft = {
             nix = ["alejandra"];
             lua = ["stylua"];
-            javascript = ["prettierd"];
-            typescript = ["prettierd"];
             javascriptreact = ["prettierd"];
-            typescriptreact = ["prettierd"];
-            css = ["prettierd"];
             html = ["prettierd"];
             json = ["prettierd"];
             markdown = ["prettierd"];
@@ -833,12 +825,8 @@ in {
       # Language servers
       nixd
       hyprls
-      nodePackages.typescript-language-server
-      nodePackages.typescript
-      vscode-langservers-extracted
       pyright
       lua-language-server
-      zls
       marksman
       clang-tools
       # ansible-language-server # Removed from nixpkgs - unmaintained

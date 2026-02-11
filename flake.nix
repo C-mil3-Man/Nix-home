@@ -30,10 +30,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    ags = {
-      url = "github:aylur/ags/v1";
-    };
-
     catppuccin = {
       url = "github:catppuccin/nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -48,7 +44,6 @@
   outputs = {
     self,
     nixpkgs,
-    ags,
     home-manager,
     alejandra,
     sops-nix,
@@ -90,7 +85,7 @@
         ./modules/fonts.nix # Fonts packages
         ./modules/portals.nix # portal
         ./modules/theme.nix # Set dark theme
-        ./modules/ly.nix # ly greater with matrix animation
+        ./modules/greetd.nix # greetd basic
 
         # Catppuccin theming
         inputs.catppuccin.nixosModules.catppuccin
