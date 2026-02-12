@@ -3,27 +3,19 @@
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.cage}/bin/cage -s -- ${pkgs.greetd.regreet}/bin/regreet";
         user = "greeter";
+        command = "${pkgs.tuigreet}/bin/tuigreet \
+          --time \
+          --time-format '%Y-%m-%d | %H:%M:%S' \
+          --remember \
+          --remember-user-session \
+          --asterisks \
+          --width 80 \
+          --theme 'border=magenta;text=cyan;prompt=green;time=white;action=blue;button=yellow;container=black;input=gray' \
+          --cmd Hyprland";
       };
     };
   };
-
-  programs.regreet = {
-    enable = true;
-    settings = {
-      background = {
-        path = "/usr/share/wallpapers/lainwp.jpg";
-        fit = "Cover";
-      };
-      GTK = {
-        application_prefer_dark_theme = true;
-      };
-    };
-  };
-
-  # Ensure greeter user has proper environment
-  environment.systemPackages = with pkgs; [cage];
 
   security.pam.services.greetd.enableGnomeKeyring = true;
 }
