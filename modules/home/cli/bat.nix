@@ -14,9 +14,9 @@
       # ansi,Catppuccin,base16,base16-256,GitHub,Nord,etc
       theme = lib.mkForce "Dracula";
     };
-    extraPackages = with pkgs.bat-extras; [
-      batman
-      batpipe
+    extraPackages = [
+      pkgs.bat-extras.batman
+      pkgs.bat-extras.batpipe
       #batgrep  #fails to build 11-1-25
     ];
   };

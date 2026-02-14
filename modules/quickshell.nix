@@ -3,21 +3,21 @@
   inputs,
   ...
 }: {
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = [
     inputs.quickshell.packages.${pkgs.system}.default
 
     # Qt6 related kits（for slove Qt5Compat problem）
-    qt6.qt5compat
-    qt6.qtbase
-    qt6.qtquick3d
-    qt6.qtwayland
-    qt6.qtdeclarative
-    qt6.qtsvg
+    pkgs.qt6.qt5compat
+    pkgs.qt6.qtbase
+    pkgs.qt6.qtquick3d
+    pkgs.qt6.qtwayland
+    pkgs.qt6.qtdeclarative
+    pkgs.qt6.qtsvg
 
     # alternate options
     # libsForQt5.qt5compat
-    kdePackages.qt5compat
-    libsForQt5.qt5.qtgraphicaleffects
+    pkgs.kdePackages.qt5compat
+    pkgs.libsForQt5.qt5.qtgraphicaleffects
   ];
 
   # necessary environment variables

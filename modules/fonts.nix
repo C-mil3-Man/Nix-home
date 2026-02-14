@@ -1,30 +1,30 @@
 {pkgs, ...}: {
   fonts = {
-    packages = with pkgs; [
-      dejavu_fonts
-      fira-code
-      fira-code-symbols
-      font-awesome
-      hackgen-nf-font
-      ibm-plex
-      inter
-      jetbrains-mono
-      material-icons
-      maple-mono.NF
-      minecraftia
-      nerd-fonts.im-writing
-      nerd-fonts.blex-mono
-      noto-fonts
-      noto-fonts-color-emoji
-      noto-fonts-cjk-sans
-      noto-fonts-cjk-serif
-      noto-fonts-monochrome-emoji
-      powerline-fonts
-      roboto
-      roboto-mono
-      symbola
-      terminus_font
-      victor-mono
+    packages = [
+      pkgs.dejavu_fonts
+      pkgs.fira-code
+      pkgs.fira-code-symbols
+      pkgs.font-awesome
+      pkgs.hackgen-nf-font
+      pkgs.ibm-plex
+      pkgs.inter
+      pkgs.jetbrains-mono
+      pkgs.material-icons
+      pkgs.maple-mono.NF
+      pkgs.minecraftia
+      pkgs.nerd-fonts.im-writing
+      pkgs.nerd-fonts.blex-mono
+      pkgs.noto-fonts
+      pkgs.noto-fonts-color-emoji
+      pkgs.noto-fonts-cjk-sans
+      pkgs.noto-fonts-cjk-serif
+      pkgs.noto-fonts-monochrome-emoji
+      pkgs.powerline-fonts
+      pkgs.roboto
+      pkgs.roboto-mono
+      pkgs.symbola
+      pkgs.terminus_font
+      pkgs.victor-mono
     ];
   };
 }

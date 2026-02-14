@@ -812,42 +812,42 @@ in {
     ];
 
     # Runtime tools and language servers
-    extraPackages = with pkgs; [
+    extraPackages = [
       # Core utilities
-      ripgrep
-      fd
-      bat
-      wl-clipboard
+      pkgs.ripgrep
+      pkgs.fd
+      pkgs.bat
+      pkgs.wl-clipboard
 
       # Git
-      lazygit
+      pkgs.lazygit
 
       # Language servers
-      nixd
-      hyprls
-      pyright
-      lua-language-server
-      marksman
-      clang-tools
+      pkgs.nixd
+      pkgs.hyprls
+      pkgs.pyright
+      pkgs.lua-language-server
+      pkgs.marksman
+      pkgs.clang-tools
       # ansible-language-server # Removed from nixpkgs - unmaintained
-      yaml-language-server
+      pkgs.yaml-language-server
 
       # Formatters
-      prettierd
-      stylua
-      shfmt
-      alejandra
-      black
-      isort
-      nodePackages.prettier
+      pkgs.prettierd
+      pkgs.stylua
+      pkgs.shfmt
+      pkgs.alejandra
+      pkgs.black
+      pkgs.isort
+      pkgs.nodePackages.prettier
 
       # Ansible tools
-      ansible
-      ansible-lint
+      pkgs.ansible
+      pkgs.ansible-lint
 
       # ASCII art
-      figlet
-      toilet
+      pkgs.figlet
+      pkgs.toilet
     ];
 
     # Enhanced Lua configuration

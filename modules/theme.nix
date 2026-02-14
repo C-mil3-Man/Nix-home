@@ -1,10 +1,10 @@
 {pkgs, ...}: {
   # Install themes/cursors that we reference
-  environment.systemPackages = with pkgs; [
-    adwaita-icon-theme
-    papirus-icon-theme
-    bibata-cursors
-    adwaita-qt
+  environment.systemPackages = [
+    pkgs.adwaita-icon-theme
+    pkgs.papirus-icon-theme
+    pkgs.bibata-cursors
+    pkgs.adwaita-qt
   ];
 
   # Environment variables as a fallback for apps not honoring gsettings

@@ -18,9 +18,9 @@ in {
     hardware.graphics = {
       enable = lib.mkDefault true;
       enable32Bit = lib.mkDefault true;
-      extraPackages = with pkgs; [
-        libva
-        libva-utils
+      extraPackages = [
+        pkgs.libva
+        pkgs.libva-utils
       ];
     };
   };

@@ -49,164 +49,164 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = [
     # Update flake script
-    (writeShellScriptBin "update" ''
+    (pkgs.writeShellScriptBin "update" ''
       cd ~/nix-home
       nh os switch -u -H ${host} .
     '')
     # Rebuild flake script
-    (writeShellScriptBin "rebuild" ''
+    (pkgs.writeShellScriptBin "rebuild" ''
       cd ~/nix-home
       nh os switch -H ${host} .
     '')
     # clean up old generations
-    (writeShellScriptBin "ncg" ''
+    (pkgs.writeShellScriptBin "ncg" ''
       nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot
     '')
 
     ##############################
     # Core System Utilities   #
     ##############################
-    alejandra # Formatter
-    curl # Command-line data transfer tool
-    wget # File downloader
-    dig # DNS lookup tool
-    git # Version control
-    killall # Kill processes by name
-    openssl # Crypto toolkit, required by Hyprland rainbow borders
-    pciutils # PCI device info tools
-    btrfs-progs # Btrfs filesystem utilities
-    cpufrequtils # CPU frequency control
-    lm_sensors # Hardware sensor readings
-    light # Screen brightness control
-    unzip # Extract zip archives
-    xarchiver # GUI archive manager
-    ncdu # Disk usage viewer
-    findutils # Basic Unix find/xargs
-    gnumake # Build automation tool
-    cargo
-    #gcc # C compiler
-    #clang # C/C++/ObjC compiler
-    #cmake # Build system generator
-    jq # JSON processor
-    ripgrep # Fast grep replacement
-    bat # Syntax-highlighted `cat`
-    fd # Fast alternative to `find`
-    dua # Disk usage analyzer
-    duf # Disk usage/free utility
-    socat # Data relay and TCP proxy
-    tldr # Simplified man pages
-    zoxide # Smarter directory jumping
-    starship # Cross-shell prompt
-    oh-my-posh # Shell prompt theme engine
-    neofetch # System info in terminal
-    fastfetch # Fast system info CLI
-    dysk # Disk usage visualizer
-    eza # Modern `ls` replacement
-    figlet # ASCII art text generator
-    cmatrix # Matrix terminal effect
-    file-roller # Archive manager
-    smartmontools # SMART disk monitoring
-    ipfetch # Network info fetcher
-    gping # Graphical ping
-    gdu # Disk usage analyzer (TUI)
-    ncftp # FTP client
+    pkgs.alejandra # Formatter
+    pkgs.curl # Command-line data transfer tool
+    pkgs.wget # File downloader
+    pkgs.dig # DNS lookup tool
+    pkgs.git # Version control
+    pkgs.killall # Kill processes by name
+    pkgs.openssl # Crypto toolkit, required by Hyprland rainbow borders
+    pkgs.pciutils # PCI device info tools
+    pkgs.btrfs-progs # Btrfs filesystem utilities
+    pkgs.cpufrequtils # CPU frequency control
+    pkgs.lm_sensors # Hardware sensor readings
+    pkgs.light # Screen brightness control
+    pkgs.unzip # Extract zip archives
+    pkgs.xarchiver # GUI archive manager
+    pkgs.ncdu # Disk usage viewer
+    pkgs.findutils # Basic Unix find/xargs
+    pkgs.gnumake # Build automation tool
+    pkgs.cargo
+    #pkgs.gcc # C compiler
+    #pkgs.clang # C/C++/ObjC compiler
+    #pkgs.cmake # Build system generator
+    pkgs.jq # JSON processor
+    pkgs.ripgrep # Fast grep replacement
+    pkgs.bat # Syntax-highlighted `cat`
+    pkgs.fd # Fast alternative to `find`
+    pkgs.dua # Disk usage analyzer
+    pkgs.duf # Disk usage/free utility
+    pkgs.socat # Data relay and TCP proxy
+    pkgs.tldr # Simplified man pages
+    pkgs.zoxide # Smarter directory jumping
+    pkgs.starship # Cross-shell prompt
+    pkgs.oh-my-posh # Shell prompt theme engine
+    pkgs.neofetch # System info in terminal
+    pkgs.fastfetch # Fast system info CLI
+    pkgs.dysk # Disk usage visualizer
+    pkgs.eza # Modern `ls` replacement
+    pkgs.figlet # ASCII art text generator
+    pkgs.cmatrix # Matrix terminal effect
+    pkgs.file-roller # Archive manager
+    pkgs.smartmontools # SMART disk monitoring
+    pkgs.ipfetch # Network info fetcher
+    pkgs.gping # Graphical ping
+    pkgs.gdu # Disk usage analyzer (TUI)
+    pkgs.ncftp # FTP client
 
     ###################################
     # Development & DevOps Tools #
     ###################################
-    python3 # Python interpreter
-    ansible # IT automation
-    luarocks # Lua package manager
-    nh # Nix helper tool
-    colmena # NixOS deployment tool
-    deploy-rs # Secondary deployment tool
-    sops # Secret management
-    openstackclient # OpenStack CLI
-    s3cmd # S3-compatible storage client
-    code-cursor # VSCode Cursor edition
-    lazygit # TUI Git client
-    gh # GitHub CLI
-    lazyjournal # TUI for journalctl
-    direnv
-    vscodium-fhs
-    gemini-cli
+    pkgs.python3 # Python interpreter
+    pkgs.ansible # IT automation
+    pkgs.luarocks # Lua package manager
+    pkgs.nh # Nix helper tool
+    pkgs.colmena # NixOS deployment tool
+    pkgs.deploy-rs # Secondary deployment tool
+    pkgs.sops # Secret management
+    pkgs.openstackclient # OpenStack CLI
+    pkgs.s3cmd # S3-compatible storage client
+    pkgs.code-cursor # VSCode Cursor edition
+    pkgs.lazygit # TUI Git client
+    pkgs.gh # GitHub CLI
+    pkgs.lazyjournal # TUI for journalctl
+    pkgs.direnv
+    pkgs.vscodium-fhs
+    pkgs.gemini-cli
 
     ##################################
     # Networking / VPN / Internet #
     ##################################
-    networkmanagerapplet # NetworkManager tray app
-    networkmanager-l2tp # Network management daemon
-    xl2tpd # L2TP VPN daemon
-    strongswan # IPsec VPN client
-    wget # HTTP downloader
-    curl # URL data fetcher
-    vesktop # Electron Discord wrapper
-    teams-for-linux # Microsoft Teams desktop client
-    signal-desktop # Secure messenger
-    bitwarden-desktop # Password manager
-    inputs.zen-browser.packages."${system}".default # Zen browser
+    pkgs.networkmanagerapplet # NetworkManager tray app
+    pkgs.networkmanager-l2tp # Network management daemon
+    pkgs.xl2tpd # L2TP VPN daemon
+    pkgs.strongswan # IPsec VPN client
+    pkgs.wget # HTTP downloader
+    pkgs.curl # URL data fetcher
+    pkgs.vesktop # Electron Discord wrapper
+    pkgs.teams-for-linux # Microsoft Teams desktop client
+    pkgs.signal-desktop # Secure messenger
+    pkgs.bitwarden-desktop # Password manager
+    inputs.zen-browser.packages.${pkgs.system}.default # Zen browser
 
     ##############################
     # Hyprland / Wayland Apps #
     ##############################
-    hypridle # Idle daemon for Hyprland
-    hyprpolkitagent # Polkit agent for Hyprland
-    pyprland # Hyprland Python automation
-    hyprlang # Hyprland config parser
-    hyprshot # Screenshot tool for Hyprland
-    hyprcursor # Cursor theme support
-    mesa # OpenGL/Mesa drivers
-    nwg-displays # Display layout GUI for wlroots
-    nwg-look # GTK/Qt theme switcher
-    waypaper # Wallpaper manager
-    hyprland-qt-support # QT integration helper
-    kdePackages.polkit-kde-agent-1 # KDE Polkit agent
-    swaynotificationcenter # Notification daemon
-    waybar # Status bar
-    wl-clipboard # Wayland clipboard
-    wlr-randr # Wayland display manager
-    wlogout # Logout menu
-    slurp # Select region for screenshots
-    grim # Screenshot utility
-    grimblast # Hyprland screenshot helper
-    swappy # Screenshot annotation
-    wallust # Generate colorschemes from wallpaper
-    swww # Wallpaper daemon
-    yad # GTK dialog builder
-    rofi # App launcher (Wayland compatible)
-    cava # Audio visualizer
-    pamixer # Audio volume control
-    pavucontrol # GUI volume mixer
-    playerctl # Media player control
-    glib # GSettings base library
-    gsettings-qt # GSettings integration for Qt
-    gtk-engine-murrine # GTK theme engine
-    libappindicator # System tray support
-    libnotify # Notification library
-    kitty # Terminal emulator
+    pkgs.hypridle # Idle daemon for Hyprland
+    pkgs.hyprpolkitagent # Polkit agent for Hyprland
+    pkgs.pyprland # Hyprland Python automation
+    pkgs.hyprlang # Hyprland config parser
+    pkgs.hyprshot # Screenshot tool for Hyprland
+    pkgs.hyprcursor # Cursor theme support
+    pkgs.mesa # OpenGL/Mesa drivers
+    pkgs.nwg-displays # Display layout GUI for wlroots
+    pkgs.nwg-look # GTK/Qt theme switcher
+    pkgs.waypaper # Wallpaper manager
+    pkgs.hyprland-qt-support # QT integration helper
+    pkgs.kdePackages.polkit-kde-agent-1 # KDE Polkit agent
+    pkgs.swaynotificationcenter # Notification daemon
+    pkgs.waybar # Status bar
+    pkgs.wl-clipboard # Wayland clipboard
+    pkgs.wlr-randr # Wayland display manager
+    pkgs.wlogout # Logout menu
+    pkgs.slurp # Select region for screenshots
+    pkgs.grim # Screenshot utility
+    pkgs.grimblast # Hyprland screenshot helper
+    pkgs.swappy # Screenshot annotation
+    pkgs.wallust # Generate colorschemes from wallpaper
+    pkgs.swww # Wallpaper daemon
+    pkgs.yad # GTK dialog builder
+    pkgs.rofi # App launcher (Wayland compatible)
+    pkgs.cava # Audio visualizer
+    pkgs.pamixer # Audio volume control
+    pkgs.pavucontrol # GUI volume mixer
+    pkgs.playerctl # Media player control
+    pkgs.glib # GSettings base library
+    pkgs.gsettings-qt # GSettings integration for Qt
+    pkgs.gtk-engine-murrine # GTK theme engine
+    pkgs.libappindicator # System tray support
+    pkgs.libnotify # Notification library
+    pkgs.kitty # Terminal emulator
 
     ###################################
     # Multimedia / GUI Applications #
     ###################################
-    ffmpeg # Multimedia framework
-    vlc # Video player
-    (mpv.override {scripts = [mpvScripts.mpris];}) # Video player with MPRIS
-    loupe # Image viewer
-    eog # GNOME image viewer
-    feh # Lightweight image viewer
-    appimage-run # Run AppImage apps
-    gnome-system-monitor # Process viewer GUI
-    baobab # Disk usage analyzer (GUI)
-    wdisplays # Display configuration GUI
-    bc
+    pkgs.ffmpeg # Multimedia framework
+    pkgs.vlc # Video player
+    (pkgs.mpv.override {scripts = [pkgs.mpvScripts.mpris];}) # Video player with MPRIS
+    pkgs.loupe # Image viewer
+    pkgs.eog # GNOME image viewer
+    pkgs.feh # Lightweight image viewer
+    pkgs.appimage-run # Run AppImage apps
+    pkgs.gnome-system-monitor # Process viewer GUI
+    pkgs.baobab # Disk usage analyzer (GUI)
+    pkgs.wdisplays # Display configuration GUI
+    pkgs.bc
 
     ##############################
     # Virtualization Tools    #
     ##############################
-    virt-viewer # SPICE/VNC VM viewer
-    libvirt # Virtualization management daemon
+    pkgs.virt-viewer # SPICE/VNC VM viewer
+    pkgs.libvirt # Virtualization management daemon
 
     ##############################
     # Extra Packages          #
