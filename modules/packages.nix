@@ -124,6 +124,7 @@
     pkgs.deploy-rs # Secondary deployment tool
     pkgs.sops # Secret management
     pkgs.openstackclient # OpenStack CLI
+    pkgs.python313Packages.openstacksdk # Openstack 4 ansible
     pkgs.s3cmd # S3-compatible storage client
     pkgs.code-cursor # VSCode Cursor edition
     pkgs.lazygit # TUI Git client

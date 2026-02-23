@@ -1,5 +1,41 @@
-# Eza is a ls replacement
 {
+  programs.zsh = {
+    enable = true;
+    initContent = ''
+      # JSON validation helper
+      checkjson() {
+        if jq -e . "$1" >/dev/null 2>&1; then
+          echo "✅ JSON is valid"
+        else
+          jq . "$1" >/dev/null
+          echo "❌ JSON is invalid"
+        fi
+      }
+
+      # Search for term in multiServer.json across local branches only
+      gitsr() {
+        if [ -z "$1" ]; then
+          echo "Usage: gitsr <search_term>"
+          return 1
+        fi
+
+        local search_term="$1"
+        local file="multiServer.json"
+
+        echo "Searching for: \"$search_term\" in $file (local branches only)"
+        echo ""
+
+        git for-each-ref --format='%(refname:short)' refs/heads/ | while read -r branch; do
+          if git show "$branch:$file" 2>/dev/null | grep -qi "$search_term"; then
+            echo "✔ Found in branch: $branch"
+            git show "$branch:$file" | grep --color=always -i "$search_term" | sed 's/^/  > /'
+            echo ""
+          fi
+        done
+      }
+    '';
+  };
+
   programs.eza = {
     enable = true;
     icons = "auto";
@@ -7,7 +43,6 @@
     enableZshIntegration = true;
     enableFishIntegration = true;
     git = true;
-
     extraOptions = [
       "--group-directories-first"
       "--no-quotes"
@@ -18,6 +53,12 @@
       "--hyperlink" # make paths clickable in some terminals
     ];
   };
+
+  # Ansible Vault key
+  home.sessionVariables = {
+    ANSIBLE_VAULT_PASSWORD_FILE = "$HOME/.ansible/password";
+  };
+
   # Aliases to make `ls`, `ll`, `la` use eza
   home.shellAliases = {
     ":q" = "exit";
@@ -37,9 +78,13 @@
     ncg = "nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
     man = "batman";
     dysk = "dysk -c label+default";
-    zi = "cdi"; # for zoxide compatibilty
+    #zi = "cdi"; # for zoxide compatibilty
     serie = "serie -p kitty --preload -g double";
-    # Terminal client: use the et wrapper (sets TERM to *-direct when available)
-    # Remove alias here so the script installed to PATH is used.
+
+    cat = "bat -p";
+    lg = "lazygit";
+    ap = "ansible-playbook";
+    oscc = "openstack --os-cloud cleura";
+    osovh = "openstack --os-cloud ovh";
   };
 }
