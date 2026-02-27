@@ -8,7 +8,7 @@
       pkgs.hackgen-nf-font
       pkgs.ibm-plex
       pkgs.inter
-      pkgs.jetbrains-mono
+      #pkgs.jetbrains-mono
       pkgs.material-icons
       pkgs.maple-mono.NF
       pkgs.minecraftia
