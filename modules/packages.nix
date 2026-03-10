@@ -79,16 +79,16 @@
     pkgs.btrfs-progs # Btrfs filesystem utilities
     pkgs.cpufrequtils # CPU frequency control
     pkgs.lm_sensors # Hardware sensor readings
-    pkgs.light # Screen brightness control
+    pkgs.brightnessctl # Screen brightness control
     pkgs.unzip # Extract zip archives
     pkgs.xarchiver # GUI archive manager
     pkgs.ncdu # Disk usage viewer
     pkgs.findutils # Basic Unix find/xargs
     pkgs.gnumake # Build automation tool
     pkgs.cargo
-    #pkgs.gcc # C compiler
-    #pkgs.clang # C/C++/ObjC compiler
-    #pkgs.cmake # Build system generator
+    pkgs.gcc # C compiler
+    pkgs.clang # C/C++/ObjC compiler
+    pkgs.cmake # Build system generator
     pkgs.jq # JSON processor
     pkgs.ripgrep # Fast grep replacement
     pkgs.bat # Syntax-highlighted `cat`
@@ -100,7 +100,6 @@
     pkgs.zoxide # Smarter directory jumping
     pkgs.starship # Cross-shell prompt
     pkgs.oh-my-posh # Shell prompt theme engine
-    pkgs.neofetch # System info in terminal
     pkgs.fastfetch # Fast system info CLI
     pkgs.dysk # Disk usage visualizer
     pkgs.eza # Modern `ls` replacement
