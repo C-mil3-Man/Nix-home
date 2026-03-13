@@ -3,7 +3,20 @@
   inputs,
   host,
   ...
-}: {
+}: let
+  openstackEnv = pkgs.python314.buildEnv.override {
+    extraLibs = with pkgs.python314Packages; [
+      python-openstackclient
+      python-barbicanclient
+      python-cinderclient
+      python-glanceclient
+      python-keystoneclient
+      python-neutronclient
+      python-novaclient
+      python-swiftclient
+    ];
+  };
+in {
   nixpkgs.config.allowUnfree = true;
 
   programs = {
@@ -121,8 +134,7 @@
     pkgs.nh # Nix helper tool
     pkgs.colmena # NixOS deployment tool
     pkgs.sops # Secret management
-    pkgs.openstackclient # OpenStack CLI
-    pkgs.barbicanclient
+    openstackEnv
     pkgs.s3cmd # S3-compatible storage client
     pkgs.code-cursor # VSCode Cursor edition
     pkgs.lazygit # TUI Git client
