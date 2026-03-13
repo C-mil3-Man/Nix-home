@@ -120,17 +120,15 @@
     pkgs.luarocks # Lua package manager
     pkgs.nh # Nix helper tool
     pkgs.colmena # NixOS deployment tool
-    pkgs.deploy-rs # Secondary deployment tool
     pkgs.sops # Secret management
     pkgs.openstackclient # OpenStack CLI
+    pkgs.barbicanclient
     pkgs.s3cmd # S3-compatible storage client
     pkgs.code-cursor # VSCode Cursor edition
     pkgs.lazygit # TUI Git client
-    pkgs.gh # GitHub CLI
     pkgs.lazyjournal # TUI for journalctl
     pkgs.direnv
     pkgs.vscodium-fhs
-    pkgs.gemini-cli
 
     ##################################
     # Networking / VPN / Internet #
