@@ -134,6 +134,7 @@ in {
     pkgs.nh # Nix helper tool
     pkgs.colmena # NixOS deployment tool
     pkgs.sops # Secret management
+    pkgs.openstack-rs #Openstack tui in rust
     openstackEnv
     pkgs.s3cmd # S3-compatible storage client
     pkgs.code-cursor # VSCode Cursor edition
@@ -152,9 +153,9 @@ in {
     pkgs.wget # HTTP downloader
     pkgs.curl # URL data fetcher
     pkgs.vesktop # Electron Discord wrapper
-    pkgs.teams-for-linux # Microsoft Teams desktop client
+    #pkgs.teams-for-linux # Microsoft Teams desktop client
     pkgs.signal-desktop # Secure messenger
-    pkgs.bitwarden-desktop # Password manager
+    #pkgs.bitwarden-desktop # Password manager
     inputs.zen-browser.packages.${pkgs.system}.default # Zen browser
 
     ##############################
@@ -216,10 +217,5 @@ in {
     ##############################
     pkgs.virt-viewer # SPICE/VNC VM viewer
     pkgs.libvirt # Virtualization management daemon
-
-    ##############################
-    # Extra Packages          #
-    ##############################
-    inputs.quickshell.packages.${pkgs.system}.default
   ];
 }
