@@ -4,8 +4,28 @@
   host,
   ...
 }: let
-  openstackEnv = pkgs.python314.buildEnv.override {
-    extraLibs = with pkgs.python314Packages; [
+  # Ansible + OpenStack Python environment
+  #
+  # IMPORTANT: Ansible bundles its own isolated Python interpreter from nixpkgs
+  # (python3.13-ansible-core), meaning it cannot see modules installed elsewhere
+  # on the system — even if openstacksdk is in systemPackages or a separate
+  # withPackages env. This is why simply adding openstacksdk to systemPackages
+  # does not work.
+  #
+  # The only way to make Ansible find Python modules (like openstacksdk) is to
+  # build Ansible itself inside the same Python environment as those modules.
+  #
+  # Solution: use python3.withPackages to create a single env containing both
+  # ansible/ansible-core AND all OpenStack client libraries. This env is then
+  # added to systemPackages, replacing the standalone pkgs.ansible entry.
+  #
+  # TL;DR: if you ever need Ansible to see a Python module, add it here —
+  # not to systemPackages directly.
+  openstackEnv = pkgs.python3.withPackages (ps:
+    with ps; [
+      openstacksdk
+      ansible
+      ansible-core
       python-openstackclient
       python-barbicanclient
       python-cinderclient
@@ -14,8 +34,7 @@
       python-neutronclient
       python-novaclient
       python-swiftclient
-    ];
-  };
+    ]);
 in {
   nixpkgs.config.allowUnfree = true;
 
@@ -128,8 +147,8 @@ in {
     ###################################
     # Development & DevOps Tools #
     ###################################
-    pkgs.python3 # Python interpreter
-    pkgs.ansible # IT automation
+    #pkgs.python3 # Python interpreter
+    #pkgs.ansible # IT automation
     pkgs.luarocks # Lua package manager
     pkgs.nh # Nix helper tool
     pkgs.colmena # NixOS deployment tool
