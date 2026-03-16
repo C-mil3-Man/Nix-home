@@ -34,11 +34,6 @@
       url = "github:catppuccin/nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    quickshell = {
-      url = "github:quickshell-mirror/quickshell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = {
@@ -80,7 +75,7 @@
         # System modules
         # inputs.distro-grub-themes.nixosModules.${system}.default
         #./modules/overlays.nix # nixpkgs overlays (CMake policy fixes)
-        ./modules/quickshell.nix # quickshell module
+        #./modules/quickshell.nix # quickshell module
         ./modules/packages.nix # Software packages
         ./modules/fonts.nix # Fonts packages
         ./modules/portals.nix # portal
