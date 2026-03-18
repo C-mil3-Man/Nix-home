@@ -172,9 +172,9 @@ in {
     pkgs.wget # HTTP downloader
     pkgs.curl # URL data fetcher
     pkgs.vesktop # Electron Discord wrapper
-    #pkgs.teams-for-linux # Microsoft Teams desktop client
+    pkgs.teams-for-linux # Microsoft Teams desktop client
     pkgs.signal-desktop # Secure messenger
-    #pkgs.bitwarden-desktop # Password manager
+    pkgs.bitwarden-desktop # Password manager
     inputs.zen-browser.packages.${pkgs.system}.default # Zen browser
 
     ##############################
